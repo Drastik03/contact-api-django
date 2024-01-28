@@ -131,6 +131,7 @@ GitHub.sublime-settings
 
 # Visual Studio Code # 
 .vscode/
+.gitignore
 !.vscode/settings.json 
 !.vscode/tasks.json 
 !.vscode/launch.json 
