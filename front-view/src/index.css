@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: rgb(4, 2, 15);
+}
+
+@layer components{
+    .inputs{
+        @apply bg-gray-900 rounded-lg shadow-md w-full h-16 flex items-center justify-start text-white font-semibold px-3 mb-3 max-sm:w-[90%] max-sm:ml-3;
+    }
+    .labels{
+        @apply font-bold text-gray-300 dark:text-white mb-2 max-sm:px-3;
+    }
+}
