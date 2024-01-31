@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import { createPerson } from "../API/Person.api";
+import { useNavigate } from "react-router-dom";
 
 function ContactForm() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -9,6 +11,7 @@ function ContactForm() {
   } = useForm();
 
   const onSubmit = handleSubmit(async (data) => {
+    //create
     const formData = new FormData();
     formData.append("image_profile", data.image_profile[0]);
     formData.append("first_name", data.first_name);
@@ -23,6 +26,7 @@ function ContactForm() {
       console.error("Error al crear persona:", error);
       console.log(error.response.data);
     }
+    navigate("/contact")
   });
 
   return (
