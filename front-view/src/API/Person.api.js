@@ -22,11 +22,10 @@ export const deletePerson = async (person_id) => {
 };
 
 
-export const updatePerson = async (id,person) => {
+export const updatePerson = async (id, person) => {
   try {
     return await personApi.put(`/${id}/`, person);
-    
   } catch (error) {
-    console.log("ERROR EN UPDATE API"+error)
+    console.log("ERROR EN UPDATE API", error.response.data);  
   }
 };

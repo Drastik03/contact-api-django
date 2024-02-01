@@ -1,17 +1,16 @@
-import { getPerson,deletePerson,updatePerson } from "../API/Person.api";
+import { getPerson,deletePerson } from "../API/Person.api";
 import { useNavigate } from "react-router-dom";
 /* eslint-disable react/prop-types */
 export function CardPerson({ person }) {
   const navigate = useNavigate()
   const handleUpdate = async () => {
-    try {
-      const id = await getPerson(person.id);
-      await updatePerson(id.data.id, person);
-      console.log("update...");
-      navigate("/contact_create"); 
-    } catch (error) {
-      console.error("Error updating person:", error);
-    }
+    const id_person = await getPerson(person.id)
+    console.log(id_person.data.id)
+    const id = id_person.id
+    console.log("Valor de id_person.id:", id);
+
+    navigate(`/contact_create/${id_person.data.id}`);
+
   };
   const handleDelete = async () => {
     const id = await getPerson(person.id)
@@ -40,13 +39,13 @@ export function CardPerson({ person }) {
       <p className="text-gray-text">{person.email}</p>
       <span className="text-sm font-bold text-white py-2">Phone</span>
       <p className="text-gray-text mb-5">{person.phone}</p>
-      <div className="mt-4 flex mb-4 justify-between items-start">
+      <div className="mt-4 flex mb-4 font-bold justify-between items-start">
         
-        <button className="text-white m-2 bg-green-600 w-[40%] rounded-full"
+        <button className="text-white m-2  bg-green-600 hover:bg-green-400 w-[40%] rounded-full"
         onClick={handleUpdate}>
           Edit
         </button>
-        <button className="text-white m-2 bg-red-600 w-[40%] rounded-full"
+        <button className="text-white m-2 bg-red-600 hover:bg-red-500 w-[40%] rounded-full"
         onClick={handleDelete}>
           Delete
         </button>
